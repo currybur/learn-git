@@ -6,8 +6,4 @@ One change
 Two changes
 Simplified cmd
 Creating a new branch.
-<<<<<<< HEAD
-Creating a new branch is quidasknsdfs.
-=======
-Creating a new branch is quidasknsdfs.
->>>>>>> feature1
+Creating a new branch is q
