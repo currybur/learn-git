@@ -6,4 +6,4 @@ One change
 Two changes
 Simplified cmd
 Creating a new branch.
-Creating a new branch is q
+Creating a new branch is not q
