@@ -4,3 +4,4 @@ This is about index.
 
 One change
 Two changes
+Simplified cmd
