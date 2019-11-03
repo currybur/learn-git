@@ -113,3 +113,113 @@ Receiving objects: 100% (3/3), done.
 Then a learngit directory is created.
 Note that we can also use ```https://github.com/michaelliao/gitskills.git```, which is slower and needs passwords each time connecting.
 ## Branches Management
+Create a new branch.
+```
+$ git checkout -b dev
+Switched to a new branch 'dev'
+```
+which is equal to
+```
+$ git branch dev
+$ git checkout dev
+Switched to branch 'dev'
+```
+Check the current branch.
+```
+$ git branch
+* dev
+  master
+```
+After finishing the work on dev branch, we can go back to master branch and merge the result.
+```
+$ git merge dev
+Updating d46f35e..b17d20e
+Fast-forward
+ readme.txt | 1 +
+ 1 file changed, 1 insertion(+)
+```
+Then delete dev branch.
+$ git branch -d dev
+Deleted branch dev (was b17d20e).
+We can also use switch command instead of checkout. For example, create and switch to a new branch
+```
+$ git switch -c dev
+```
+Just want to switch to a currently existing branch
+```
+$ git switch master
+```
+## Dealing with Conflict
+After modifying on different branches respectively, we can not directly merge them. Can go to the file where the conflict occurs, and fix it. Use ```git log``` to check branches' merging information.
+```
+$ git log --graph --pretty=oneline --abbrev-commit
+*   cf810e4 (HEAD -> master) conflict fixed
+|\  
+| * 14096d0 (feature1) AND simple
+* | 5dc6824 & simple
+|/  
+* b17d20e branch test
+* d46f35e (origin/master) remove test.txt
+* b84166e add test.txt
+* 519219b git tracks changes
+* e43a48b understand how stage works
+* 1094adb append GPL
+* e475afc add distributed
+* eaadf4e wrote a readme file
+```
+## Branch Managing Policy
+```git merge``` will be executed in ```Fast forward``` mode, which throws the information of branching away. We can use the ```git merge --no-ff``` parameter.
+## Storing Working Scene on a Branch
+If we have work unfinished on dev branch, and have to do another task
+```
+$ git status
+On branch dev
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   hello.py
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   readme.txt
+```
+Then use ```git stash``` to store them. After another task, to ressume the stored work, first check
+```
+$ git stash list
+stash@{0}: WIP on dev: f52c633 add merge
+```
+Here we have ```git stash apply``` to recover and not delete it from stash, ```git stash drop``` is needed. Or use ```git stash pop```. Can stash particular task.
+```
+$ git stash apply stash@{0}
+```
+## Copy Modification Commit to Other Branches
+After committing on master branch, we want to repeat on dev branch.
+```
+$ git branch
+* dev
+  master
+$ git cherry-pick 4c805e2
+[master 1d4b803] fix bug 101
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ ```
+## Developing a New Feature
+Should better create a new feature branch. If we want to abandon it before merging, 
+```
+$ git branch -D feature-vulcan
+Deleted branch feature-vulcan (was 287773e).
+```
+## Cooperation
+Try to push my modification
+```
+git push origin <branch-name>
+```
+Failed for the remote being newer than my local, so try to merge
+```
+git pull
+```
+If there are conflicts, solve it and commit locally, then
+```
+git push origin <branch-name>
+```
