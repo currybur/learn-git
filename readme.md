@@ -1,8 +1,8 @@
 # Git Learning Notes
-**菜鸡学git以及经常遇到的一些tips**
-
+**菜鸡学git笔记以及经常遇到的一些tips**
+***
 Learn to apply git and github to manage codes.
-
+***
 ## 本地操作
 
 * 初始配置用户信息
