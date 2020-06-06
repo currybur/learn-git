@@ -136,6 +136,7 @@ And paste ```id_rsa.pub``` into "Account settings/Add SSH key" on github.
   Note that we can also use https, which is slower and needs passwords each time connecting.
 
 * Branches Management
+  
   Create a new branch.
   ```
   $ git checkout -b dev
@@ -175,23 +176,23 @@ And paste ```id_rsa.pub``` into "Account settings/Add SSH key" on github.
 
 * Dealing with Conflict
 
-After modifying on different branches respectively, we can not directly merge them. Can go to the file where the conflict occurs, and fix it. Use ```git log``` to check branches' merging information.
-```
-$ git log --graph --pretty=oneline --abbrev-commit
-*   cf810e4 (HEAD -> master) conflict fixed
-|\  
-| * 14096d0 (feature1) AND simple
-* | 5dc6824 & simple
-|/  
-* b17d20e branch test
-* d46f35e (origin/master) remove test.txt
-* b84166e add test.txt
-* 519219b git tracks changes
-* e43a48b understand how stage works
-* 1094adb append GPL
-* e475afc add distributed
-* eaadf4e wrote a readme file
-```
+  After modifying on different branches respectively, we can not directly merge them. Can go to the file where the conflict occurs, and fix it. Use ```git log``` to check branches' merging information.
+  ```
+  $ git log --graph --pretty=oneline --abbrev-commit
+  *   cf810e4 (HEAD -> master) conflict fixed
+  |\  
+  | * 14096d0 (feature1) AND simple
+  * | 5dc6824 & simple
+  |/  
+  * b17d20e branch test
+  * d46f35e (origin/master) remove test.txt
+  * b84166e add test.txt
+  * 519219b git tracks changes
+  * e43a48b understand how stage works
+  * 1094adb append GPL
+  * e475afc add distributed
+  * eaadf4e wrote a readme file
+  ```
 
 * Branch Managing Policy
   
@@ -236,6 +237,7 @@ $ git log --graph --pretty=oneline --abbrev-commit
   ```
 
 * Developing a New Feature
+  
   Should better create a new feature branch. If we want to abandon it before merging, 
   ```
   $ git branch -D feature-vulcan
@@ -258,6 +260,7 @@ $ git log --graph --pretty=oneline --abbrev-commit
   ```
 
 ## 一些tips
+
 * 报错```fatal: refusing to merge unrelated histories```，如果合并了提交历史不同的仓库，为了防止程序员手残，git就会给这么个提示。确认后使用
 ```--allow-unrelated-histories```来完成merge。
 * 有时候发现commit没记录了，可能是提交的用户邮箱和github上留的不一样，```git config user.name/user.email```查看，不对就
