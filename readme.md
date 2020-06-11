@@ -1,7 +1,7 @@
 # Git Learning Notes
 **菜鸡学git笔记以及经常遇到的一些tips**
 ***
-Learn to apply git and github to manage codes.
+Learn to apply git and github to manage codes. 已经搬运到[博客](https://currybur.github.io/posts/git-notes/)上了
 ***
 ## 本地操作
 
